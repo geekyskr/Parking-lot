@@ -1,0 +1,17 @@
+{
+    "parking-lot1": {
+        "Two-Wheeler": 50,
+        "Hatchback Car": 20,
+        "SUV Car":10
+    },
+    "parking-lot2": {
+        "Two-Wheeler": 20,
+        "Hatchback Car": 50,
+        "SUV Car":40
+    },
+    "parking-lot3": {
+        "Two-Wheeler": 100,
+        "Hatchback Car": 120,
+        "SUV Car":100
+    }
+}
