@@ -1,7 +1,9 @@
 const express = require("express");
 const app = express();
-const {parkAVehical, exitAVehical, getVehicalHistory} = require("../controllers/vehicalController")
+const {parkAVehicle, exitAVehicle, getVehicleHistory} = require("../controllers/vehicleController")
 
-app.post("/parkVehical", parkAVehical);
-app.post("/exitVehical", exitAVehical);
-app.post("/parkingHistory", getVehicalHistory);
+app.post("/parkVehicle", parkAVehicle);
+app.post("/exitVehicle", exitAVehicle);
+app.post("/parkingHistory", getVehicleHistory);
+
+module.exports = app;

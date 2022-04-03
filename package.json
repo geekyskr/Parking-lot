@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/geekyskr/Parking-lot#readme",
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "http": "^0.0.1-security",
+    "uuid": "^8.3.2"
   }
 }
