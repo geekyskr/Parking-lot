@@ -16,10 +16,16 @@ function fetchTicketById(ticketId) {
 function updateTicket(ticket, amount, exitTime) {
     ticket.exitTime = exitTime;
     ticket.amount = amount;
+    return ticket;
 }
 
 function fetchParkingHistoryByVehicleNumber(vehicleNumber) {
-
+    return vehicleDetails.get(vehicleNumber);
 }
 
-module.exports = [generateAndStoreTicket, fetchTicketById, updateTicket, fetchParkingHistoryByVehicleNumber]
+function appendTicketToVehicleDetails(vehicleNumber, updatedTicket) {
+    vehicleDetails.get(vehicleNumber).push(updatedTicket);
+}
+
+module.exports = [generateAndStoreTicket, fetchTicketById, updateTicket,
+    fetchParkingHistoryByVehicleNumber, appendTicketToVehicleDetails]

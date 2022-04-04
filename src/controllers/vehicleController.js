@@ -3,7 +3,7 @@ const { validateRequestForParkAVehicle, validateRequestExitAVehicle,
 const { generateTicketId, getCurrTime, getEmptySlot, markSlotBooked,
     markSlotUnBooked } = require("./controllerHelper");
 const { generateAndStoreTicket, fetchTicketById, updateTicket,
-    fetchParkingHistoryByVehicleNumber } = require("../models/model-helper");
+    fetchParkingHistoryByVehicleNumber, appendTicketToVehicleDetails } = require("../models/model-helper");
 
 
 function parkAVehicle(request, responce) {
@@ -28,8 +28,9 @@ function exitAVehicle(request, responce) {
     const ticket = fetchTicketById(ticketId);
     const exitTime = getCurrTime();
     const amount = calculateAmount(ticket, exitTime);
-    updateTicket(ticket, amount, exitTime);
+    const updatedTicket = updateTicket(ticket, amount, exitTime);
     markSlotUnBooked(ticket.parkingLotName, ticket.vehicleType, ticket.slot)
+    appendTicketToVehicleDetails(ticket.vehicleNumber, updatedTicket);
     responce.status(201).send(amount);
 }
 
