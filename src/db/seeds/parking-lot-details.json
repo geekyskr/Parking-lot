@@ -1,17 +1,17 @@
 {
     "parking-lot1": {
-        "Two-Wheeler": 50,
-        "Hatchback Car": 20,
-        "SUV Car":10
+        "Two-Wheeler": [false, false, false, false, false, false],
+        "Hatchback Car": [false, false, false, false, false],
+        "SUV Car":[false, false, false, false]
     },
     "parking-lot2": {
-        "Two-Wheeler": 20,
-        "Hatchback Car": 50,
-        "SUV Car":40
+        "Two-Wheeler": [false, false, false, false, false, false],
+        "Hatchback Car": [false, false, false, false],
+        "SUV Car": [false, false, false, false, false, false]
     },
     "parking-lot3": {
-        "Two-Wheeler": 100,
-        "Hatchback Car": 120,
-        "SUV Car":100
+        "Two-Wheeler": [false, false, false, false, false, false],
+        "Hatchback Car": [false, false, false],
+        "SUV Car": [false, false, false, false, false, false]
     }
 }

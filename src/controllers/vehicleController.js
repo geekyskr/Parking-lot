@@ -1,31 +1,36 @@
 const { validateRequestForParkAVehicle, validateRequestExitAVehicle,
     validateRequestParkingHistory } = require("../validator/vehicleControllerValidator");
-const { generateTicketId, getCurrTime } = require("./controllerHelper");
+const { generateTicketId, getCurrTime, getEmptySlot, markSlotBooked,
+    markSlotUnBooked } = require("./controllerHelper");
 
-async function parkAVehicle(request, responce) {
+function parkAVehicle(request, responce) {
     const reqPayload = request.body;
     console.log(reqPayload);
     validateRequestForParkAVehicle(reqPayload);
     const ticketId = generateTicketId();
     const entryTime = getCurrTime();
-    const slot = getEmptySlot();
+    const parkingLotName = reqPayload.parkingLotName;
+    const vehicleType = reqPayload.vehicleType;
+    const slot = getEmptySlot(parkingLotName, vehicleType);
     generateAndStoreTicket(reqPayload, ticketId, entryTime, slot);
+    markSlotBooked(parkingLotName, vehicleType, slot);
     responce.status(201).send(ticketId);
 }
 
-async function exitAVehicle(request, responce) {
+function exitAVehicle(request, responce) {
     const reqPayload = request.body;
     console.log(reqPayload);
     validateRequestExitAVehicle(reqPayload);
     const ticketId = reqPayload.ticketId;
     const ticket = fetchTicketById(ticketId);
-    const amount = calculateAmount();
     const exitTime = getCurrTime();
+    const amount = calculateAmount(ticket, exitTime);
     updateTicket(ticket, amount, exitTime);
+    markSlotUnBooked(ticket.parkingLotName, ticket.vehicleType, ticket.slot)
     responce.status(201).send(amount);
 }
 
-async function getVehicleHistory(request, responce) {
+function getVehicleHistory(request, responce) {
     const reqPayload = request.body;
     console.log(reqPayload);
     validateRequestParkingHistory(reqPayload);

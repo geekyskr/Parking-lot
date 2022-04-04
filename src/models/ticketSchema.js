@@ -11,6 +11,9 @@ const ticketSchema = new Schema ({
     vehicleType: {
         type: String
     },
+    slot: {
+        type: Number
+    },
     entryTime: {
         type: Number
     },
