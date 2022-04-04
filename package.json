@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/controllers/script/script.js && node src/serverLauncher.js"
+    "start": "node src/serverLauncher.js"
   },
   "repository": {
     "type": "git",

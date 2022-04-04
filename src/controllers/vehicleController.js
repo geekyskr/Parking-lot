@@ -17,7 +17,7 @@ function parkAVehicle(request, responce) {
     const slot = getEmptySlot(parkingLotName, vehicleType);
     generateAndStoreTicket(reqPayload, ticketId, entryTime, slot);
     markSlotBooked(parkingLotName, vehicleType, slot);
-    responce.status(201).send(ticket);
+    responce.status(201).send(ticketId);
 }
 
 function exitAVehicle(request, responce) {
