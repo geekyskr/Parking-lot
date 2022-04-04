@@ -6,5 +6,4 @@ let tickets = new Map();
 let vehicleDetails = new Map();
 
 let slotsState = parkingLotDetails;
-
 module.exports = [tickets, vehicleDetails, slotsState];

@@ -1,8 +1,9 @@
-import { v4 as uuidv4 } from 'uuid';
+const {v4} = require("uuid");
 const { slotsState } = require("./script/script");
+const {vehicleTypeHourlyrate} = require("../db/seeds/vehicle-type-hourly-rate.json");
 
 function generateTicketId() {
-    return uuidv4();
+    return v4();
 }
 
 function getCurrTime() {
@@ -11,7 +12,8 @@ function getCurrTime() {
 }
 
 function getEmptySlot(parkingLotName, vehicleType) {
-    const stateArray = slotsState[parkingLotName][vehicleType];
+    console.log({parkingLotName}, {vehicleType}, {slotsState});
+    const stateArray = slotsState.parkingLotName.vehicleType;
     for (let i = 0; i < stateArray.length; i++) {
         if (stateArray[i] == false) {
             return i;
@@ -29,7 +31,10 @@ function markSlotUnBooked(parkingLotName, vehicleType, slot) {
 }
 
 function calculateAmount(ticket, exitTime) {
-
+    const vehicleType = ticket.vehicleType;
+    const ratePerHour = vehicleTypeHourlyrate[vehicleType];
+    const hour = Math.ceil((exitTime - ticket.entryTime)/(1000*60*60));
+    return ratePerHour*hour;
 }
 
 module.exports = {

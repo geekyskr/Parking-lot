@@ -1,9 +1,13 @@
 const express = require("express");
+const bodyParser = require('body-parser')
 const app = express();
 const {parkAVehicle, exitAVehicle, getVehicleHistory} = require("../controllers/vehicleController")
 
-app.post("/parkVehicle", parkAVehicle);
-app.post("/exitVehicle", exitAVehicle);
-app.post("/parkingHistory", getVehicleHistory);
+const jsonParser = bodyParser.json()
+
+
+app.post("/parkVehicle", jsonParser,  parkAVehicle);
+app.post("/exitVehicle", jsonParser, exitAVehicle);
+app.post("/parkingHistory", jsonParser, getVehicleHistory);
 
 module.exports = app;
