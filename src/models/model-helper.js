@@ -13,7 +13,6 @@ function generateAndStoreTicket(reqPayload, ticketId, entryTime, slot) {
         }
         else {
             const currState = JSON.parse(data);
-            console.log(currState);
             currState[ticketId] = ticket;
             writeFile(allTicketPath, JSON.stringify(currState, null, 2), (err) => {
                 if(err) console.log("Failed to update file", err);
@@ -54,14 +53,12 @@ function appendTicketToVehicleDetails(vehicleNumber, updatedTicket) {
         }
         else {
             const currState = JSON.parse(data);
-            console.log(currState[vehicleNumber]);
             if(currState[vehicleNumber] == undefined) {
                 currState[vehicleNumber] = [];
             }
             let vehicleDetailsArray = currState[vehicleNumber];
             let index = vehicleDetailsArray.length;
             currState[vehicleNumber][index] = updatedTicket;
-            console.log(updatedTicket, currState[vehicleNumber][index], index);
             writeFile(vehicleHistory, JSON.stringify(currState, null, 2), (err) => {
                 if(err) console.log("Failed to update file", err);
             });

@@ -5,15 +5,25 @@ import { generateAndStoreTicket, fetchTicketById, updateTicket, fetchParkingHist
 
 function parkAVehicle(request, responce) {
     const reqPayload = request.body;
-    validateRequestForParkAVehicle(reqPayload);
+    try {
+        validateRequestForParkAVehicle(reqPayload);
+    } catch (error) {
+        responce.status(400).send(error);
+        return;
+    }
     const ticketId = generateTicketId();
     const entryTime = getCurrTime();
     const parkingLotName = reqPayload.parkingLotName;
     const vehicleType = reqPayload.vehicleType;
-    const slot = getEmptySlot(parkingLotName, vehicleType);
-    generateAndStoreTicket(reqPayload, ticketId, entryTime, slot);
-    markSlotBooked(parkingLotName, vehicleType, slot);
-    responce.status(201).send(ticketId);
+    try {
+        const slot = getEmptySlot(parkingLotName, vehicleType);
+        if(slot == undefined) throw "Not able to assign slot";
+        generateAndStoreTicket(reqPayload, ticketId, entryTime, slot);
+        markSlotBooked(parkingLotName, vehicleType, slot);
+        responce.status(201).send(ticketId);
+    }catch (error) {
+        responce.status(500).send(error);
+    }
 }
 
 function exitAVehicle(request, responce) {

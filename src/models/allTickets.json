@@ -22,5 +22,53 @@
     "ticketId": "f5c4f695-7a87-46f3-a1a3-40a95915513c",
     "entryTime": 1652412860105,
     "slot": 0
+  },
+  "8bb169e5-38c9-4159-9d64-0829b03f1200": {
+    "parkingLotName": "parking-lot1",
+    "vehicleType": "Two-Wheeler",
+    "vehicleNumber": "DL4CAF4943",
+    "ticketId": "8bb169e5-38c9-4159-9d64-0829b03f1200",
+    "entryTime": 1652428320764,
+    "slot": 2
+  },
+  "4ac762fe-cd13-4100-b1ed-0107fce0283b": {
+    "parkingLotName": "parking-lot2",
+    "vehicleType": "Two-Wheeler",
+    "vehicleNumber": "DL4CAF4943",
+    "ticketId": "4ac762fe-cd13-4100-b1ed-0107fce0283b",
+    "entryTime": 1652428334257,
+    "slot": 0
+  },
+  "219d9d57-225e-44a0-9436-ecb26633e4f4": {
+    "parkingLotName": "parking-lot1",
+    "vehicleType": "Hatchback Car",
+    "vehicleNumber": "DL4CAF4943",
+    "ticketId": "219d9d57-225e-44a0-9436-ecb26633e4f4",
+    "entryTime": 1652428391995,
+    "slot": 0
+  },
+  "8c5034a9-0e31-4d5d-bcf5-5b0055f41253": {
+    "parkingLotName": "parking-lot1",
+    "vehicleType": "Hatchback Car",
+    "vehicleNumber": "DL4CdfAF4943",
+    "ticketId": "8c5034a9-0e31-4d5d-bcf5-5b0055f41253",
+    "entryTime": 1652428591683,
+    "slot": 1
+  },
+  "13fb3b87-15c5-4411-8cd3-6538d8750f9c": {
+    "parkingLotName": "parking-lot1",
+    "vehicleType": "Hatchback Car",
+    "vehicleNumber": "DL4CdfAF4943",
+    "ticketId": "13fb3b87-15c5-4411-8cd3-6538d8750f9c",
+    "entryTime": 1652428595236,
+    "slot": 2
+  },
+  "0e6e920b-bdf3-4a37-9318-ca056de49aad": {
+    "parkingLotName": "parking-lot1",
+    "vehicleType": "Hatchback Car",
+    "vehicleNumber": "DL4CdfAF4943",
+    "ticketId": "0e6e920b-bdf3-4a37-9318-ca056de49aad",
+    "entryTime": 1652428597457,
+    "slot": 4
   }
 }

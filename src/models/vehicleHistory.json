@@ -30,5 +30,17 @@
       "exitTime": 1652422328513,
       "amount": 90
     }
+  ],
+  "DL4CdfAF4943": [
+    {
+      "parkingLotName": "parking-lot1",
+      "vehicleType": "Hatchback Car",
+      "vehicleNumber": "DL4CdfAF4943",
+      "ticketId": "1677998b-4939-4594-8eae-7a666d0fef7f",
+      "entryTime": 1652428596325,
+      "slot": 3,
+      "exitTime": 1652428750756,
+      "amount": 30
+    }
   ]
 }

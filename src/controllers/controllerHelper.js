@@ -17,7 +17,13 @@ function getEmptySlot(parkingLotName, vehicleType) {
     try {
         const result = readFileSync(parkingLotDetailsPath, "utf-8");
         const currState = JSON.parse(result);
-        const stateArray = currState[parkingLotName][vehicleType]
+        if(currState[parkingLotName] == undefined) {
+            throw "parkingLotName is not present";
+        }
+        const stateArray = currState[parkingLotName][vehicleType];
+        if(stateArray == undefined) {
+            throw "vehicleType for this parkingLotName is not present";
+        }
         for (let i = 0; i < stateArray.length; i++) {
             if (stateArray[i] == false) {
                     return i;
