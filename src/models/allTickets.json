@@ -15,14 +15,6 @@
     "entryTime": 1652412771240,
     "slot": 1
   },
-  "efbef1d4-9136-4e5b-a350-e4ef75f86e76": {
-    "parkingLotName": "parking-lot1",
-    "vehicleType": "Hatchback Car",
-    "vehicleNumber": "DL4CAF4943",
-    "ticketId": "efbef1d4-9136-4e5b-a350-e4ef75f86e76",
-    "entryTime": 1652412803343,
-    "slot": 0
-  },
   "f5c4f695-7a87-46f3-a1a3-40a95915513c": {
     "parkingLotName": "parking-lot2",
     "vehicleType": "Hatchback Car",

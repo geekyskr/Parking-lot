@@ -69,5 +69,20 @@ function appendTicketToVehicleDetails(vehicleNumber, updatedTicket) {
     })
 }
 
+function deleteTicketFromAllTickets(ticketId) {
+    readFile(allTicketPath, "utf-8", (err, data)=>{
+        if(err) {
+            console.log(err);
+        }
+        else {
+            const currState = JSON.parse(data);
+            currState[ticketId] = undefined;
+            writeFile(allTicketPath, JSON.stringify(currState, null, 2), (err) => {
+                if(err) console.log("Failed to update file", err);
+            });
+        }
+    })
+}
+
 export { generateAndStoreTicket, fetchTicketById, updateTicket,
-    fetchParkingHistoryByVehicleNumber, appendTicketToVehicleDetails }
+    fetchParkingHistoryByVehicleNumber, appendTicketToVehicleDetails, deleteTicketFromAllTickets }

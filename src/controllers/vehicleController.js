@@ -1,6 +1,6 @@
 import { validateRequestForParkAVehicle, validateRequestExitAVehicle, validateRequestParkingHistory } from "../validator/vehicleControllerValidator.js";
 import { generateTicketId, getCurrTime, getEmptySlot, markSlotBooked, markSlotUnBooked, calculateAmount } from "./controllerHelper.js";
-import { generateAndStoreTicket, fetchTicketById, updateTicket, fetchParkingHistoryByVehicleNumber, appendTicketToVehicleDetails } from "../models/model-helper.js";
+import { generateAndStoreTicket, fetchTicketById, updateTicket, fetchParkingHistoryByVehicleNumber, appendTicketToVehicleDetails, deleteTicketFromAllTickets } from "../models/model-helper.js";
 
 
 function parkAVehicle(request, responce) {
@@ -21,12 +21,15 @@ function exitAVehicle(request, responce) {
     validateRequestExitAVehicle(reqPayload);
     const ticketId = reqPayload.ticketId;
     const ticket = fetchTicketById(ticketId);
-    console.log({ticket});
+    if(ticket ==  undefined) {
+        throw "Ticket is not present in allTickets doc";
+    }
     const exitTime = getCurrTime();
     const amount = calculateAmount(ticket, exitTime);
     const updatedTicket = updateTicket(ticket, amount, exitTime);
     markSlotUnBooked(ticket.parkingLotName, ticket.vehicleType, ticket.slot);
     appendTicketToVehicleDetails(ticket.vehicleNumber, updatedTicket);
+    deleteTicketFromAllTickets(ticketId);
     responce.status(201).send(amount.toString());
 }
 
