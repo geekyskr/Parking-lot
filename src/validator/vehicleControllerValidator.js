@@ -29,7 +29,7 @@ function validateReqPayloadPresence(reqPayload) {
     }
 }
 
-module.exports = {
+export {
     validateRequestForParkAVehicle, validateRequestExitAVehicle,
     validateRequestParkingHistory
 };

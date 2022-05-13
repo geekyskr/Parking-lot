@@ -1,17 +1,86 @@
 {
-    "parking-lot1": {
-        "Two-Wheeler": [false, false, false, false, false, false],
-        "Hatchback Car": [false, false, false, false, false],
-        "SUV Car":[false, false, false, false]
-    },
-    "parking-lot2": {
-        "Two-Wheeler": [false, false, false, false, false, false],
-        "Hatchback Car": [false, false, false, false],
-        "SUV Car": [false, false, false, false, false, false]
-    },
-    "parking-lot3": {
-        "Two-Wheeler": [false, false, false, false, false, false],
-        "Hatchback Car": [false, false, false],
-        "SUV Car": [false, false, false, false, false, false]
-    }
+  "parking-lot1": {
+    "Two-Wheeler": [
+      true,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "Hatchback Car": [
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "SUV Car": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "parking-lot2": {
+    "Two-Wheeler": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "Hatchback Car": [
+      true,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "SUV Car": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "parking-lot3": {
+    "Two-Wheeler": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "Hatchback Car": [
+      false,
+      false,
+      false
+    ],
+    "SUV Car": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  }
 }

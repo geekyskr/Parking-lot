@@ -1,13 +1,14 @@
-const express = require("express");
-const bodyParser = require('body-parser')
+import express from "express";
+import pkg from 'body-parser';
+const { json } = pkg;
 const app = express();
-const {parkAVehicle, exitAVehicle, getVehicleHistory} = require("../controllers/vehicleController")
+import { parkAVehicle, exitAVehicle, getVehicleHistory } from "../controllers/vehicleController.js";
 
-const jsonParser = bodyParser.json()
+const jsonParser = json()
 
 
 app.post("/parkVehicle", jsonParser,  parkAVehicle);
 app.post("/exitVehicle", jsonParser, exitAVehicle);
 app.post("/parkingHistory", jsonParser, getVehicleHistory);
 
-module.exports = app;
+export default app;

@@ -1,14 +1,10 @@
-const { validateRequestForParkAVehicle, validateRequestExitAVehicle,
-    validateRequestParkingHistory } = require("../validator/vehicleControllerValidator");
-const { generateTicketId, getCurrTime, getEmptySlot, markSlotBooked,
-    markSlotUnBooked } = require("./controllerHelper");
-const { generateAndStoreTicket, fetchTicketById, updateTicket,
-    fetchParkingHistoryByVehicleNumber, appendTicketToVehicleDetails } = require("../models/model-helper");
+import { validateRequestForParkAVehicle, validateRequestExitAVehicle, validateRequestParkingHistory } from "../validator/vehicleControllerValidator.js";
+import { generateTicketId, getCurrTime, getEmptySlot, markSlotBooked, markSlotUnBooked, calculateAmount } from "./controllerHelper.js";
+import { generateAndStoreTicket, fetchTicketById, updateTicket, fetchParkingHistoryByVehicleNumber, appendTicketToVehicleDetails } from "../models/model-helper.js";
 
 
 function parkAVehicle(request, responce) {
     const reqPayload = request.body;
-    console.log(reqPayload);
     validateRequestForParkAVehicle(reqPayload);
     const ticketId = generateTicketId();
     const entryTime = getCurrTime();
@@ -22,25 +18,24 @@ function parkAVehicle(request, responce) {
 
 function exitAVehicle(request, responce) {
     const reqPayload = request.body;
-    console.log(reqPayload);
     validateRequestExitAVehicle(reqPayload);
     const ticketId = reqPayload.ticketId;
     const ticket = fetchTicketById(ticketId);
+    console.log({ticket});
     const exitTime = getCurrTime();
     const amount = calculateAmount(ticket, exitTime);
     const updatedTicket = updateTicket(ticket, amount, exitTime);
-    markSlotUnBooked(ticket.parkingLotName, ticket.vehicleType, ticket.slot)
+    markSlotUnBooked(ticket.parkingLotName, ticket.vehicleType, ticket.slot);
     appendTicketToVehicleDetails(ticket.vehicleNumber, updatedTicket);
-    responce.status(201).send(amount);
+    responce.status(201).send(amount.toString());
 }
 
 function getVehicleHistory(request, responce) {
     const reqPayload = request.body;
-    console.log(reqPayload);
     validateRequestParkingHistory(reqPayload);
     const vehicleNumber = reqPayload.vehicleNumber;
     const parkingHistory = fetchParkingHistoryByVehicleNumber(vehicleNumber);
     responce.status(200).json(parkingHistory);
 }
 
-module.exports = { parkAVehicle, exitAVehicle, getVehicleHistory };
+export { parkAVehicle, exitAVehicle, getVehicleHistory };
